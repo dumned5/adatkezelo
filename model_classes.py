@@ -20,21 +20,24 @@ class Person:
         return not self.__eq__(other)
 
     def __hash__(self) -> int:
-        return id.__hash__()
+        return hash(self.id)
+
+    def __repr__(self):
+        return f"Person(id={self.id}, name='{self.name}', age={self.age}, male='{self.male}') \n"
 
 
 class Address:
     id: str
-    street: str
+    street_name: str
     city: str
-    postal_code: int
+    postal_code: str
 
     def __str__(self):
-        return "#{0}: {1}, {2} ({3})".format(self.id, self.street, self.city, self.postal_code)
+        return "#{0}: {1}, {2} ({3})".format(self.id, self.street_name, self.city, self.postal_code)
     
-    def __init__(self, id: str, street: str, city: str, postal_code: int):
+    def __init__(self, id: str,city: str, postal_code: str, street_name: str):
         self.id = id
-        self.street = street
+        self.street_name = street_name
         self.city = city
         self.postal_code = postal_code
 
@@ -45,7 +48,10 @@ class Address:
         return not self.__eq__(other)
     
     def __hash__(self):
-        return id.__hash__()
+        return hash(self.id)
+
+    def __repr__(self):
+        return f"Address(id={self.id}, city= '{self.city}', postal_code= {self.postal_code}, street name= '{self.street_name}')\n"
     
 class Phone:
     id: str
@@ -67,4 +73,7 @@ class Phone:
         return not self.__eq__(other)
     
     def __hash__(self):
-        return id.__hash__()
+        return hash(self.id)
+
+    def __repr__(self):
+        return f"Phone(id= {self.id}, Number = {self.number}, type= '{self.type}')\n"

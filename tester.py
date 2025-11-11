@@ -1,22 +1,33 @@
+from data.basic.generator import generate_people, generate_Address, generate_Phone
 from model_classes import Person, Address, Phone
+from data.basic.Handlers.csv_handler import CSVHandler
 
 def main():
     print("=" * 50)
-    print("TESTING PERSON CLASS")
+    print("TESTING PERSON_GENERATOR CLASS")
     print("=" * 50)
-    
-    # Test 1: Basic creation and string representation
-    print("\n1. Testing basic creation and __str__:")
-    person1 = Person("P001", "John Doe", 30, True)
-    person2 = Person("P002", "Jane Smith", 25, False)
-    print(f"Person 1: {person1}")
-    print(f"Person 2: {person2}")
-    
-    # Test 2: Equality testing
-    print("\n2. Testing equality (__eq__):")
-    person3 = Person("P001", "John Different", 35, True)  # Same ID, different other fields
-    print(f"person1 == person3 (same ID): {person1 == person3}")
-    print(f"person1 == person2 (different ID): {person1 == person2}")
+    print(generate_people(5, 0.5, "hu_HU", True, 18, 90))
+    print("=" * 50)
+    print("TESTING ADRESS_GENERATOR CLASS")
+    print("=" * 50)
+    print(generate_Address(5, "hu_HU", True))
+    print("=" * 50)
+    print("TESTING PHONE_GENERATOR CLASS")
+    print("=" * 50)
+    print(generate_Phone(5,"hu_HU", True))
+    print("=" * 50)
+    print("TESTING CSVHANLDER CLASS")
+    print("=" * 50)
+    people = generate_people(3)
+    addresses = generate_Address(3)
+    phones = generate_Phone(3)
 
+    CSVHandler.csv_writer(people, "people.csv")
+    CSVHandler.csv_writer(addresses, "addresses.csv")
+    CSVHandler.csv_writer(phones, "phones.csv")
+
+    people_from_csv = CSVHandler.csv_reader(Person, "people.csv")
+    addresses_from_csv = CSVHandler.csv_reader(Address, "addresses.csv")
+    phones = CSVHandler.csv_reader(Phone, "phones.csv")
 if __name__ == "__main__":
     main()
