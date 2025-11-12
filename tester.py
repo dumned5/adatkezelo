@@ -2,6 +2,7 @@ from data.basic.generator import generate_people, generate_Address, generate_Pho
 from model_classes import Person, Address, Phone
 from data.basic.Handlers.csv_handler import CSVHandler
 from data.basic.Handlers.json_handler import JSONHandler
+from data.basic.Handlers.xlsx_handler import XLSXHandler
 
 def main():
     print("=" * 50)
@@ -37,6 +38,15 @@ def main():
     JSONHandler.write_json(people + addresses + phones)
     readed_json = JSONHandler.read_json()
     print(readed_json)
+
+    print("=" * 50)
+    print("TESTING XLSXHHANDLER CLASS")
+    print("=" * 50)
+    XLSXHandler.write_xlsx(
+        people, 
+        addresses, 
+        phones, 
+        "data.xlsx")
 
 if __name__ == "__main__":
     main()
