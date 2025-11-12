@@ -47,6 +47,9 @@ def main():
         addresses, 
         phones, 
         "data.xlsx")
+    
+    readed_xlsx = XLSXHandler.read_xlsx("data.xlsx")
+    print(readed_xlsx)
 
 if __name__ == "__main__":
     main()
