@@ -1,6 +1,7 @@
 from data.basic.generator import generate_people, generate_Address, generate_Phone
 from model_classes import Person, Address, Phone
 from data.basic.Handlers.csv_handler import CSVHandler
+from data.basic.Handlers.json_handler import JSONHandler
 
 def main():
     print("=" * 50)
@@ -29,5 +30,13 @@ def main():
     people_from_csv = CSVHandler.csv_reader(Person, "people.csv")
     addresses_from_csv = CSVHandler.csv_reader(Address, "addresses.csv")
     phones = CSVHandler.csv_reader(Phone, "phones.csv")
+    print("=" * 50)
+    print("TESTING JSONHHANDLER CLASS")
+    print("=" * 50)
+    
+    JSONHandler.write_json(people + addresses + phones)
+    readed_json = JSONHandler.read_json()
+    print(readed_json)
+
 if __name__ == "__main__":
     main()
