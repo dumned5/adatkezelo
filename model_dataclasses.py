@@ -1,8 +1,6 @@
 from dataclasses import dataclass, field
 
 
-
-
 @dataclass
 class Person:
     id: str = field(hash= True, compare= True)
