@@ -3,6 +3,8 @@ from model_classes import Person, Address, Phone
 from data.basic.Handlers.csv_handler import CSVHandler
 from data.basic.Handlers.json_handler import JSONHandler
 from data.basic.Handlers.xlsx_handler import XLSXHandler
+from data.basic.Handlers.oracle_loader import get_connection, create_tables, insert_data, read_all
+
 
 def main():
     print("=" * 50)
@@ -16,7 +18,7 @@ def main():
     print("=" * 50)
     print("TESTING PHONE_GENERATOR CLASS")
     print("=" * 50)
-    print(generate_Phone(5,"hu_HU", True))
+    print(generate_Phone(5, "hu_HU", True))
     print("=" * 50)
     print("TESTING CSVHANLDER CLASS")
     print("=" * 50)
@@ -34,7 +36,7 @@ def main():
     print("=" * 50)
     print("TESTING JSONHHANDLER CLASS")
     print("=" * 50)
-    
+
     JSONHandler.write_json(people + addresses + phones)
     readed_json = JSONHandler.read_json()
     print(readed_json)
@@ -43,13 +45,24 @@ def main():
     print("TESTING XLSXHHANDLER CLASS")
     print("=" * 50)
     XLSXHandler.write_xlsx(
-        people, 
-        addresses, 
-        phones, 
+        people,
+        addresses,
+        phones,
         "data.xlsx")
-    
+
     readed_xlsx = XLSXHandler.read_xlsx("data.xlsx")
     print(readed_xlsx)
+
+
+print("=" * 50)
+print("TESTING ORACLE_LOADER")
+print("=" * 50)
+
+conn = get_connection()
+create_tables(conn)
+insert_data(conn, 10)
+read_all(conn)
+conn.close()
 
 if __name__ == "__main__":
     main()
