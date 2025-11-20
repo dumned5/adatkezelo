@@ -9,10 +9,10 @@ cx_Oracle.init_oracle_client(lib_dir=r"E:\Oracle\instantclient_23_0")
 # ---------------- ORACLE KAPCSOLAT ----------------
 def get_connection() -> cx_Oracle.Connection:
     """Oracle kapcsolat létrehozása"""
-    username = input("U_U94LE2").strip()
-    password = input("debrecen").strip()
-    dsn = "codd.inf.unideb.hu:1521/ora21cp.inf.unideb.hu"  # Egyetemi szerver DSN
-    return cx_Oracle.connect(user="U_U94LE2", password="debrecen", dsn="codd.inf.unideb.hu:1521/ora21cp.inf.unideb.hu")
+    username = input("U_NEPTUN").strip()
+    password = input("jelszo").strip()
+    dsn = "egyetemi szerver"  # Egyetemi szerver DSN
+    return cx_Oracle.connect(user="U_NEPTUN", password="jelszo", dsn="egyetemi szerver")
 
 
 # ---------------- TÁBLA LÉTREHOZÁS ----------------
